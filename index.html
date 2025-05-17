@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emma – Your AI Assistant</title>
+  <title>Emma — Your AI Assistant</title>
   <style>
     body {
       font-family: sans-serif;
@@ -36,11 +36,74 @@
     }
     .subtitle {
       font-size: 1rem;
-      color: #666;
+      color: #555;
       margin-bottom: 1.5rem;
     }
     textarea {
       width: 100%;
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: none;
+      font-family: monospace;
+      margin-bottom: 1rem;
+    }
+    button {
+      width: 100%;
       padding: 0.75rem;
-      font-size: 1rem;
-      ma
+      background-color: #4f7fff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .response {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #eaf0ff;
+      border-radius: 8px;
+      min-height: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="emma-card">
+    <img src="https://i.imgur.com/YOUR_EMMA_IMAGE.jpg" alt="Emma Avatar" class="avatar" />
+    <h1 class="title">Emma</h1>
+    <p class="subtitle">A warm, gentle assistant for seniors offering clear, simple help and companionship.</p>
+
+    <textarea id="question" placeholder="Ask Emma something..." rows="3"></textarea>
+    <button onclick="askEmma()">Ask Emma</button>
+    <div id="response" class="response"></div>
+  </div>
+
+  <script>
+    async function askEmma() {
+      const input = document.getElementById("question").value.trim();
+      const responseBox = document.getElementById("response");
+
+      if (!input) {
+        responseBox.textContent = "Please type a question.";
+        return;
+      }
+
+      responseBox.textContent = "Emma is thinking...";
+
+      try {
+        const res = await fetch("/.netlify/functions/ask-emma", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question: input })
+        });
+
+        const data = await res.json();
+        responseBox.textContent = data.answer || "Emma had trouble replying.";
+      } catch (error) {
+        responseBox.textContent = "Something went wrong.";
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>
