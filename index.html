@@ -1,82 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Emma AI Assistant</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        background-color: #f7f9fc;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-      }
-      .emma-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        max-width: 500px;
-        width: 100%;
-      }
-      .avatar {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 1rem;
-      }
-      .title {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-      }
-      .subtitle {
-        font-size: 1rem;
-        margin-bottom: 1.5rem;
-        color: #666;
-      }
-      textarea {
-        width: 100%;
-        padding: 1rem;
-        font-size: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        margin-bottom: 1rem;
-        resize: none;
-      }
-      button {
-        width: 100%;
-        background-color: #4e73df;
-        color: white;
-        font-size: 1rem;
-        padding: 0.75rem;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-      }
-      .response {
-        margin-top: 1rem;
-        background-color: #eef3ff;
-        padding: 1rem;
-        border-radius: 8px;
-        text-align: left;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="emma-card">
-      <img src="https://i.imgur.com/your-emma-image.jpg" alt="Emma Avatar" class="avatar" />
-      <h1 class="title">Emma</h1>
-      <p class="subtitle">A warm, gentle assistant for seniors offering clear, simple help and companionship.</p>
-      <textarea id="question" rows="3" placeholder="Ask Emma something..."></textarea>
-      <button onclick="askEmma()">Ask Emma</button>
-      <div id="response" class="response"></div>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emma – Your AI Assistant</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f7f9fc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-    <script>
-      async function askEmma() {
-        const question = document.getElementById("question
+    .emma-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p.subtitle {
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+      resize: none;
+    }
+
+    button {
+      background-color: #4e79ff;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    #response {
+      margin-top: 1rem;
+      background-color: #eef3ff;
+      padding: 1rem;
+      border-radius: 8px;
+      min-height: 50px;
+    }
+  </style>
