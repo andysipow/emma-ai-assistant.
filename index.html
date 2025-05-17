@@ -1,106 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Emma – AI Assistant</title>
-  <style>
-    body {
-      font-family: "Arial Rounded MT Bold", sans-serif;
-      background: #f5f7fa;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-    }
-    .container {
-      max-width: 500px;
-      width: 100%;
-      background: white;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-      font-size: 1.8rem;
-    }
-    textarea {
-      width: 100%;
-      font-size: 1.1rem;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      resize: none;
-    }
-    button {
-      margin-top: 10px;
-      width: 100%;
-      padding: 14px;
-      font-size: 1.1rem;
-      background-color: #5c8df6;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-    button:disabled {
-      background-color: #999;
-    }
-    .response {
-      margin-top: 20px;
-      padding: 15px;
-      background: #e8f0ff;
-      border-radius: 10px;
-      font-size: 1.2rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Emma – Your AI Assistant</h1>
-    <textarea id="userInput" placeholder="Ask Emma anything..." rows="3"></textarea>
-    <button onclick="askEmma()" id="askBtn">Ask Emma</button>
-    <div id="response" class="response"></div>
+<div class="emma-card">
+  <img src="https://i.imgur.com/your-emma-image.jpg" alt="Emma Avatar" class="avatar" />
+  <h1 class="title">Emma</h1>
+  <p class="subtitle">A warm, gentle assistant for seniors offering clear, simple help and companionship.</p>
+  
+  <div class="starters">
+    <button>What appointments do I have today?</button>
+    <button>Can you remind me to take my medicine at 8pm?</button>
+    <button>What's the weather like tomorrow?</button>
+    <button>Can we chat for a bit?</button>
   </div>
-
-  <script>
-    async function askEmma() {
-      const input = document.getElementById('userInput').value.trim();
-      const responseBox = document.getElementById('response');
-      const button = document.getElementById('askBtn');
-
-      if (!input) return;
-      responseBox.innerText = 'Emma is thinking...';
-      button.disabled = true;
-
-      const res = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer sk-proj-YOUR_KEY_HERE" // 👈 put your OpenAI key here
-        },
-        body: JSON.stringify({
-          model: "gpt-3.5-turbo",
-          messages: [
-            {
-              role: "system",
-              content: "You are Emma, a kind and supportive AI assistant for senior adults. Be simple, clear, and encouraging."
-            },
-            {
-              role: "user",
-              content: input
-            }
-          ]
-        })
-      });
-
-      const data = await res.json();
-      const message = data.choices?.[0]?.message?.content || "Emma had trouble replying.";
-      responseBox.innerText = message;
-      button.disabled = false;
-    }
-  </script>
-</body>
-</html>
+</div>
