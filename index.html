@@ -1,12 +1,64 @@
-<div class="emma-card">
-  <img src="https://i.imgur.com/your-emma-image.jpg" alt="Emma Avatar" class="avatar" />
-  <h1 class="title">Emma</h1>
-  <p class="subtitle">A warm, gentle assistant for seniors offering clear, simple help and companionship.</p>
-  
-  <div class="starters">
-    <button>What appointments do I have today?</button>
-    <button>Can you remind me to take my medicine at 8pm?</button>
-    <button>What's the weather like tomorrow?</button>
-    <button>Can we chat for a bit?</button>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emma AI Assistant</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f7f9fc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .emma-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    .title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+    .starters button {
+      display: block;
+      width: 100%;
+      margin-bottom: 0.5rem;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #5a8dee;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .starters button:hover {
+      background-color: #3f6ad8;
+    }
+  </style>
+</head>
+<body>
+  <div class="emma-card">
+    <img src="https://i.imgur.com/your-emma-image.jpg" alt="Emma Avatar" class="avatar" />
+    <h1 class="title">Emma</h1>
+    <p class="subtitle">A warm, gentle assistant for seniors offering clear, simple help and companionship.</p>
+    <div class="starters">
+      <button>What appointmen
