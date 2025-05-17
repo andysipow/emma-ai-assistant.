@@ -3,10 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emma AI Assistant</title>
+  <title>Emma – AI Assistant</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      background: #f4f4f4;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .chat-box {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    .response {
+      background: #e8f1ff;
+      padding: 0.5rem;
+      border-radius: 5px;
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to Emma AI Assistant</h1>
-  <p>This is a placeholder for your AI assistant.</p>
+  <h1>Emma – Your AI Assistant</h1>
+  <div class="chat-box">
+    <textarea id="userInput" placeholder="Ask Emma something..."></textarea>
+    <button onclick="askEmma()">Ask Emma</button>
+    <div id="response" class="response"></div>
+  </div>
+
+  <script>
+    async function askEmma() {
+      const input = document.getElementById('userInput').value;
+      const responseBox = document.getElementById('response');
+      responseBox.innerText = 'Emma is thinking...';
+
+      const res = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer sk-proj-YOUR_KEY_HERE" // replace with your OpenAI key
+        },
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          messages: [
+            { role: "system", content: "You are Emma, a kind, simple and supportive assistant for seniors." },
+            { role: "user", content: input }
+          ]
+        })
+      });
+
+      const data = await res.json();
+      const message = data.choices?.[0]?.message?.content || "Emma had trouble replying.";
+      responseBox.innerText = message;
+    }
+  </script>
 </body>
 </html>
